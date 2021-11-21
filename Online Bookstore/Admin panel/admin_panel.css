@@ -1,0 +1,330 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Kumbh Sans", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background-color: whitesmoke;
+	font-family: system-ui;
+}
+.clearfix{ 
+	clear: both;
+}
+
+/* NAV BAR */
+nav {
+    background-color: black; /*Change the background of the nav tag to black*/
+    color: white; /*Change the font color of the nav tag to white*/
+    top: 0; /*Place the nav tag at the very top edge of the website */
+    display: flexbox; /* Makes the navigation tag flexible, and change size according to screen (Which can help in making a responsive mobile version) */
+    position: sticky; /* Always postition the navigation on top of the screen eventhough user is scrolling down */
+    z-index: 500; /* Stacks the elements. Since the z-index is a high number, the nav tag elements will stack at the highest and wont overlap with other elements.*/
+}
+
+#nav_bar_logo{
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* Change the background color to a gradient color */
+    background-size: 100%; /* Specify size of background */
+    background-clip: text; /* The background size should only be as big as the text size*/
+    -webkit-background-clip: text; /* Same thing as background-clip: text;, but with Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Same thing as background-clip: text;, but with Mozilla Firefox Compatibility */
+    color: transparent; /* Make the font color transparent (So that it will show the background liner gradient as the font color*/
+    float: left; /* Position the id at the left side */
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    
+}
+
+/* Clearfix hack. Prevent elements from overflowing */
+nav:after{
+    content:'';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    float: right; /*List will be placed at the right side of the navigation bar*/
+    list-style: none; /* No list style */
+    margin-right: 40px;
+    position: relative; /*Position does not move*/
+}
+
+nav ul li {
+    float: left; /*Lists are originally in a top to bottom way. To flatten it, float: left is used to push each list to the left*/
+    background: black; /* Make the background color black for the drop-down navigation bar */
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+
+nav ul li a:hover{
+    color: cyan; 
+    border-radius: 5px; /* No sharp edges around border*/
+    /* box-shadow: length of x| length of y| blur radius | color, */
+    box-shadow: 0 0 5px cyan, 0 0 5px cyan; /* The above comment is how box-shadow works. The same comment is written twice to double the shadow, so it looks thicker*/     
+}
+
+nav ul ul li a:hover{
+    color: cyan;
+    box-shadow: none;
+}
+
+.acc_button{
+    background: #B993D6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px; /* No sharp edges around border*/
+}
+
+nav ul ul{
+    position: absolute; /* Stays in the position, but ignore the document layout */
+    top: 90px;/* 90 pixels away from the top of the postion:relative; list*/
+    border-top: 3px solid cyan; /* Cyan color on top of the list */
+    visibility: hidden; /* Make the list hidden */
+    transition: top 0.3s;
+}
+
+nav ul li:hover ul{
+    top: 70px;
+    visibility: visible; /* Make the list visible */
+}
+
+
+nav ul ul li {
+    margin: 0px;
+    width: 150px;
+    float: none; /* DO not want the element to float */
+}
+
+nav ul ul li a{
+    line-height: 50px;
+}
+
+.show, .icon{ 
+    display: none; /* Dont display it (Will use it in the mobile size screen) */
+}
+
+@media screen and (max-width: 968px){ /* If the width of the screen becomes 968 pixels, execute the code below*/
+    nav ul{
+        margin-right: 0px;
+        float: left;
+    }
+
+    #nav_bar_logo{
+        padding-left: 30px;
+        width: 100%;
+    }
+
+    nav ul li, nav ul ul li {
+        display: block;
+        width: 100%;
+    }
+
+    nav ul ul{
+        top: 70px;
+        position: static;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul ul li{
+        border-bottom: 0px;
+    }
+
+
+    nav ul ul a{
+        padding-left: 40px;
+    }
+
+    .show{
+        display: block;
+        color: white;
+        font-size: 18px;
+        padding: 0 20px;
+        line-height: 70px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    .show:hover{
+        color: cyan;
+    }
+
+    .icon{
+        display: block;
+        color: white;
+        position: absolute;
+        right: 40px;
+        line-height: 70px;
+        font-size: 25px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    nav ul li a:hover{
+        box-shadow: none;
+    }
+
+    .show + a, ul{
+        display: none;
+    }
+
+    [id^=btn]:checked + ul{ /* selects all elements with the id attribute value that begins with "btn" */
+        display: block;
+    }
+}
+
+#main{
+    justify-content: center;
+    align-items: center; /*the item will be displayed center*/
+    padding: 16px; /* all top bottom lef right padding size 16px*/
+	margin: auto; /* place the element at the center */
+}
+.head{
+	padding: 20px;
+    display: flex; /*expands items to fill available free space to prevent overflow */
+}
+
+.profile{
+	float: right; /* places an element on the right side of its container */
+	width: 200px;
+}
+
+.pro-img{
+	float: left; /* places an element on the left side of its container */
+	width: 60px;
+	margin-top: 10px; /*the top of the item will have spaces about 10px*/ 
+    border-radius: 50%; /*the edge of container will become curve */
+}
+.profile p{
+	color: rgb(0, 0, 0);
+	font-weight: 500; /* the font will become thicker */
+	margin-left: 70px; /*the left of the item will have spaces about 70px*/ 
+	margin-top: 15px;
+	font-size: 13,5px;
+}
+.profile p span{
+	font-weight: 400;
+	font-size: 12px;
+	display: block;
+	color: #8e8b8b;
+}
+
+.col-div-8{
+	width: 85%;
+    margin: 0 auto; /* place the element at the center */
+}
+
+.content-box{
+	padding: 20px;
+}
+.title_style{
+    padding: 0 0 0 240px; /* the padding of top lef right is 0, bottom 240px */
+    margin: auto;
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text; /* Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Mozilla Firefox Compatibility */
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color:transparent;
+    font-size: 42px;
+}
+.content-box p span{
+	float: right;
+	background-color: rgb(245, 242, 237);
+	padding: 3px 10px;
+	font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: -5px; /*the top of the item will have minus spaces about 5px*/
+}
+
+.content-box span {
+    cursor: pointer; /* the mouse hovered will become pointer*/
+}
+
+table{
+	margin: auto;
+    width: 100%;
+    border-collapse: collapse; /* set the borders of the cell present inside the table*/
+    box-shadow: 0 5px 10px #e1e5ee; /* will have shadow at the edge of the box */
+    background-color: white;
+    text-align: left; /* the text will be located at the left side*/
+    margin-top: -55px;
+    margin-bottom: 50px;
+}
+td, th{
+	text-align: left;
+	padding: 15px;
+	color: rgb(0, 0, 0);
+}
+
+th{
+    padding: 16px 32px;
+    text-transform: uppercase; /* all the text will become uppercase */
+    letter-spacing: 2px; /* between every letter will have 2px space */
+    font-size: 15px;
+    font-weight: 900;
+}
+
+td{
+    padding: 16px 32px;
+}
+
+.add_button {
+    margin-left: 89%;
+    font-weight: 400;
+    margin-top: -80px;
+	display: block;
+	background-color: #e8e5e1;
+    font-size: 12pt;
+    padding: 10px 5px;
+    border: none; /* no border displayed*/
+    border-radius: 4px; 
+    cursor: pointer;
+    position: relative; /* positioned relative to its normal position */
+    transition: all 0.3s; /* allow property changes to occur smoothly over a specified duration*/
+    outline: none; /*no line around the outside of an element*/
+    width: 120px;
+}
+
+.add_button:hover { /* when mouse hover the element, will execute the CSS below*/
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text; /* Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Mozilla Firefox Compatibility */
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color:transparent;
+}
+
+.add-btn {
+    text-align: center;
+    text-decoration: none; /* the underline of the text will be remove */
+}
+
+thead{
+    box-shadow: 0 5px 10px #e1e5ee;
+}
+
+tr:nth-child(even){ /* the even number of the tr will execute the CSS below*/
+    background-color: #f4f6fb; 
+}
+
+tbody{
+    font-size: 15px;
+}

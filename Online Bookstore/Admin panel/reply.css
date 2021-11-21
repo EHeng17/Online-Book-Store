@@ -1,0 +1,302 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Kumbh Sans", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background-color: whitesmoke;
+	font-family: system-ui;
+}
+
+/* NAV BAR */
+nav {
+    background-color: black; /*Change the background of the nav tag to black*/
+    color: white; /*Change the font color of the nav tag to white*/
+    top: 0; /*Place the nav tag at the very top edge of the website */
+    display: flexbox; /* Makes the navigation tag flexible, and change size according to screen (Which can help in making a responsive mobile version) */
+    position: sticky; /* Always postition the navigation on top of the screen eventhough user is scrolling down */
+    z-index: 500; /* Stacks the elements. Since the z-index is a high number, the nav tag elements will stack at the highest and wont overlap with other elements.*/
+}
+
+#nav_bar_logo{
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* Change the background color to a gradient color */
+    background-size: 100%; /* Specify size of background */
+    background-clip: text; /* The background size should only be as big as the text size*/
+    -webkit-background-clip: text; /* Same thing as background-clip: text;, but with Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Same thing as background-clip: text;, but with Mozilla Firefox Compatibility */
+    color: transparent; /* Make the font color transparent (So that it will show the background liner gradient as the font color*/
+    float: left; /* Position the id at the left side */
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    
+}
+
+/* Clearfix hack. Prevent elements from overflowing */
+nav:after{
+    content:'';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    float: right; /*List will be placed at the right side of the navigation bar*/
+    list-style: none; /* No list style */
+    margin-right: 40px;
+    position: relative; /*Position does not move*/
+}
+
+nav ul li {
+    float: left; /*Lists are originally in a top to bottom way. To flatten it, float: left is used to push each list to the left*/
+    background: black; /* Make the background color black for the drop-down navigation bar */
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+
+nav ul li a:hover{
+    color: cyan; 
+    border-radius: 5px; /* No sharp edges around border*/
+    /* box-shadow: length of x| length of y| blur radius | color, */
+    box-shadow: 0 0 5px cyan, 0 0 5px cyan; /* The above comment is how box-shadow works. The same comment is written twice to double the shadow, so it looks thicker*/     
+}
+
+nav ul ul li a:hover{
+    color: cyan;
+    box-shadow: none;
+}
+
+.acc_button{
+    background: #B993D6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px; /* No sharp edges around border*/
+}
+
+nav ul ul{
+    position: absolute; /* Stays in the position, but ignore the document layout */
+    top: 90px;/* 90 pixels away from the top of the postion:relative; list*/
+    border-top: 3px solid cyan; /* Cyan color on top of the list */
+    visibility: hidden; /* Make the list hidden */
+    transition: top 0.3s;
+}
+
+nav ul li:hover ul{
+    top: 70px;
+    visibility: visible; /* Make the list visible */
+}
+
+
+nav ul ul li {
+    margin: 0px;
+    width: 150px;
+    float: none; /* DO not want the element to float */
+}
+
+nav ul ul li a{
+    line-height: 50px;
+}
+
+.show, .icon{ 
+    display: none; /* Dont display it (Will use it in the mobile size screen) */
+}
+
+@media screen and (max-width: 968px){ /* If the width of the screen becomes 968 pixels, execute the code below*/
+    nav ul{
+        margin-right: 0px;
+        float: left;
+    }
+
+    #nav_bar_logo{
+        padding-left: 30px;
+        width: 100%;
+    }
+
+    nav ul li, nav ul ul li {
+        display: block;
+        width: 100%;
+    }
+
+    nav ul ul{
+        top: 70px;
+        position: static;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul ul li{
+        border-bottom: 0px;
+    }
+
+
+    nav ul ul a{
+        padding-left: 40px;
+    }
+
+    .show{
+        display: block;
+        color: white;
+        font-size: 18px;
+        padding: 0 20px;
+        line-height: 70px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    .show:hover{
+        color: cyan;
+    }
+
+    .icon{
+        display: block;
+        color: white;
+        position: absolute;
+        right: 40px;
+        line-height: 70px;
+        font-size: 25px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    nav ul li a:hover{
+        box-shadow: none;
+    }
+
+    .show + a, ul{
+        display: none;
+    }
+
+    [id^=btn]:checked + ul{ /* selects all elements with the id attribute value that begins with "btn" */
+        display: block;
+    }
+}
+
+
+
+
+.background {
+    height: 100vh; /* 100% of the viewport height*/
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(../Login&Register/background_image5.jpg);
+    background-position: center; /* sets the center position for the background image*/
+    background-size: cover; /* the background image will full fill the entire broswer size*/
+    display: flex; /*expands items to fill available free space to prevent overflow */
+    justify-content: center;
+    align-items: center; /*the item will be displayed center*/
+}
+
+.container {
+    width: 650px;
+    height: 580px;
+    background: #FFF;
+    border-radius: 5px; /*the edge of container will become curve */
+    box-shadow: 0 0 5px rgba(0,0,0,.3); /* will have shadow at the edge of the box */
+    padding: 40px 30px; /* the top and bottom of the container will have 40px size and left right is 30px */
+}
+
+.container .login-text {
+    color: #111;
+    font-weight: 800; /* the font will become thicker */
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px; /*the bottom of the item will have spaces about 20px*/
+    display: block;
+}
+
+.container .login-social {
+    display: grid; /* dividing a page into major regions*/
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    margin-bottom: 25px;
+}
+
+
+.container .login-email .input-group {
+    margin-bottom: 25px;
+}
+
+.container .login-email .input-group input, .input-group select{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e7e7e7; /* the border of the container will have 2px solid line */
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    outline: none; /*no line around the outside of an element*/
+    transition: .3s; /* allow property changes to occur smoothly over a specified duration*/
+}
+
+.container .login-email .input-group input:focus, .container .login-email  .input-group input:valid, .container .login-email .fl_name input:focus, .container .login-email .fl_name input:valid{
+    border-color: #a29bfe; /* have border color if click on it */
+}
+
+textarea{
+    width: 100%;
+    height: 100%;
+    border: 2px solid #e7e7e7;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 30px;
+    resize: none; 
+    outline: none;
+    transition: .3s;
+}
+
+textarea:focus{
+    border-color: #a29bfe;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    border: none;
+    background: #a29bfe;
+    outline: none;
+    border-radius: 30px;
+    font-size: 19px;
+    color: #FFF;
+    cursor: pointer; /* the mouse hovered will become pointer*/
+    transition: .3s;
+}
+
+.btn:hover { /* when mouse hover the element, will execute the CSS below*/
+    transform: translateY(-5px);
+    background: #6c5ce7;
+}
+
+.login-register-text {
+    color: #111;
+    font-weight: 600;
+}
+
+.login-register-text a {
+    text-decoration: none;
+    color: #6c5ce7;
+}
+
+@media (max-width: 430px) {
+    .container {
+        width: 300px;
+    }
+    .container .login-social {
+        display: block;
+    }
+    .container .login-social a {
+        display: block;
+    }
+}

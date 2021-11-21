@@ -1,0 +1,361 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Kumbh Sans", sans-serif;
+}
+
+
+/* NAV BAR */
+nav {
+    background-color: black; /*Change the background of the nav tag to black*/
+    color: white; /*Change the font color of the nav tag to white*/
+    top: 0; /*Place the nav tag at the very top edge of the website */
+    display: flexbox; /* Makes the navigation tag flexible, and change size according to screen (Which can help in making a responsive mobile version) */
+    position: sticky; /* Always postition the navigation on top of the screen eventhough user is scrolling down */
+    z-index: 500; /* Stacks the elements. Since the z-index is a high number, the nav tag elements will stack at the highest and wont overlap with other elements.*/
+}
+
+#nav_bar_logo{
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* Change the background color to a gradient color */
+    background-size: 100%; /* Specify size of background */
+    background-clip: text; /* The background size should only be as big as the text size*/
+    -webkit-background-clip: text; /* Same thing as background-clip: text;, but with Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Same thing as background-clip: text;, but with Mozilla Firefox Compatibility */
+    color: transparent; /* Make the font color transparent (So that it will show the background liner gradient as the font color*/
+    float: left; /* Position the id at the left side */
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 70px;
+    padding-left: 60px;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    
+}
+
+/* Clearfix hack. Prevent elements from overflowing */
+nav:after{
+    content:'';
+    clear: both;
+    display: table;
+}
+
+nav ul {
+    float: right; /*List will be placed at the right side of the navigation bar*/
+    list-style: none; /* No list style */
+    margin-right: 40px;
+    position: relative; /*Position does not move*/
+}
+
+nav ul li {
+    float: left; /*Lists are originally in a top to bottom way. To flatten it, float: left is used to push each list to the left*/
+    background: black; /* Make the background color black for the drop-down navigation bar */
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none; /* No underline at the bottom of the anchor tag*/
+    line-height: 70px;
+    font-size: 18px;
+    padding: 8px 15px;
+}
+
+nav ul li a:hover{
+    color: cyan; 
+    border-radius: 5px; /* No sharp edges around border*/
+    /* box-shadow: length of x| length of y| blur radius | color, */
+    box-shadow: 0 0 5px cyan, 0 0 5px cyan; /* The above comment is how box-shadow works. The same comment is written twice to double the shadow, so it looks thicker*/     
+}
+
+nav ul ul li a:hover{
+    color: cyan;
+    box-shadow: none;
+}
+
+.acc_button{
+    background: #B993D6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 5px; /* No sharp edges around border*/
+}
+
+nav ul ul{
+    position: absolute; /* Stays in the position, but ignore the document layout */
+    top: 90px;/* 90 pixels away from the top of the postion:relative; list*/
+    border-top: 3px solid cyan; /* Cyan color on top of the list */
+    visibility: hidden; /* Make the list hidden */
+    transition: top 0.3s;
+}
+
+nav ul li:hover ul{
+    top: 70px;
+    visibility: visible; /* Make the list visible */
+}
+
+
+nav ul ul li {
+    margin: 0px;
+    width: 150px;
+    float: none; /* DO not want the element to float */
+}
+
+nav ul ul li a{
+    line-height: 50px;
+}
+
+.show, .icon{ 
+    display: none; /* Dont display it (Will use it in the mobile size screen) */
+}
+
+@media screen and (max-width: 968px){ /* If the width of the screen becomes 968 pixels, execute the code below*/
+    nav ul{
+        margin-right: 0px;
+        float: left;
+    }
+
+    #nav_bar_logo{
+        padding-left: 30px;
+        width: 100%;
+    }
+
+    nav ul li, nav ul ul li {
+        display: block;
+        width: 100%;
+    }
+
+    nav ul ul{
+        top: 70px;
+        position: static;
+        border-top: none;
+        float: none;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul ul li{
+        border-bottom: 0px;
+    }
+
+
+    nav ul ul a{
+        padding-left: 40px;
+    }
+
+    .show{
+        display: block;
+        color: white;
+        font-size: 18px;
+        padding: 0 20px;
+        line-height: 70px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    .show:hover{
+        color: cyan;
+    }
+
+    .icon{
+        display: block;
+        color: white;
+        position: absolute;
+        right: 40px;
+        line-height: 70px;
+        font-size: 25px;
+        cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+    }
+
+    nav ul li a:hover{
+        box-shadow: none;
+    }
+
+    .show + a, ul{
+        display: none;
+    }
+
+    [id^=btn]:checked + ul{ /* selects all elements with the id attribute value that begins with "btn" */
+        display: block;
+    }
+}
+
+
+.wrapper {
+	background: #f6f5f7;
+	display: flex;  /*expands items to fill available free space to prevent overflow */
+	justify-content: center; 
+	align-items: center; /*the item will be displayed center*/
+	flex-direction: column; /*sets how flex items are placed, column: same as row but top to bottom*/
+	font-family: 'Montserrat', sans-serif;
+	height: 91vh;
+	width: 100%;
+}
+
+h1 {
+	font-weight: bold; /*the word is bold*/
+	margin-bottom: 25px; /*the bottom of the item will have spaces about 25px*/ 
+}
+
+.colored_header {
+	text-align: center; /* the text will be located at the center*/
+	margin-bottom: 25px;
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text; /* Chrome and Safari Compatibility */
+    -moz-background-clip: text; /* Mozilla Firefox Compatibility */
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color:transparent;
+    
+}
+
+
+.button {
+    margin-top: 25px; /*the top of the item will have spaces about 25px*/ 
+	border-radius: 20px; /*the edge of container will become curve */
+	border: 1px solid tomato; /* the border of the container will have 1px solid line tomato color */
+	background-color: tomato;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px; /* the top and bottom of the container will have 12px size and left right is 45px */
+	letter-spacing: 1px; /* between every letter will have 1px space */
+	text-transform: uppercase; /*all text will be upper case */
+	transition: transform 80ms ease-in;
+    text-decoration: none; /* the underline of the text will be remove */
+    color: white;
+}
+
+.button:active {
+	transform: scale(0.95); /*transformation that resizes an element on the 2D plane*/
+}
+
+
+.button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.form_wrapper {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+.input_area, select{
+	background-color: #eee;
+	border: none; /* no border displayed*/
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), /* will have shadow at the edge of the box */
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative; /* positioned relative to its normal position */
+	overflow: hidden; /*prevents scrollbars from showing up*/
+	width: 768px;
+	max-width: 100%; /*minimum width */
+	min-height: 480px; /*minimum height */
+}
+
+.form-container {
+	position: absolute; /* takes the document out of the document flow */
+	top: 0; /* give new bounding box for the block */
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+}
+
+.personal_details_container {
+	left: 0; /* give new bounding box for the block */
+	width: 50%;
+	z-index: 2; /* controls the vertical stacking order of elements that overlap */
+}
+
+.container.right-panel-active .personal_details_container {
+	transform: translateX(100%);
+}
+
+.email_pw_container {
+	left: 0;
+	width: 50%;
+	z-index: 1;
+}
+
+.container.right-panel-active .email_pw_container {
+	transform: translateX(100%);
+	z-index: 5;
+}
+
+
+.overlay-container {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 50%;
+	height: 100%;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+	z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+	transform: translateX(-100%);
+}
+
+.overlay {
+    background: #833ab4;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-repeat: no-repeat; /* the background image is only show once*/
+	background-size: cover; /* the background image will full fill the entire broswer size*/
+	background-position: 0 0; /* sets the initial position for the background image*/
+	color: #FFFFFF;
+	position: relative;
+	left: -100%;
+	height: 100%;
+	width: 200%;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+  	transform: translateX(50%);
+}
+
+.overlay-panel {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	height: 100%;
+	width: 50%;
+	transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+	transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+	transform: translateX(0);
+}
+
+.overlay-right {
+	right: 0;
+}
+
+.container.right-panel-active .overlay-right {
+	transform: translateX(20%);
+}

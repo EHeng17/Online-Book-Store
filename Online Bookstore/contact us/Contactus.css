@@ -1,0 +1,401 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Montserrat";
+}
+
+.bodystyle {
+  height: 100vh;
+  width: 100%;
+  display: flex;/*expands items to fill available free space to prevent overflow */
+  align-items: center;/*the item will be displayed center*/
+  justify-content: center;
+  flex-direction: column;
+  background-image: url('contact.png'); 
+  background-color: white; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-size: cover;/* the background image will full fill the entire broswer size*/
+}
+
+/*Contact us fill in form Section*/
+.container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0px 0px 20px #00000010;/* will have shadow at the edge of the box */
+  background-color: white;
+  border-radius: 8px;/*the edge of container will become curve */
+  margin-bottom: 20px;/*the bottom of the item will have spaces about 20px*/
+}
+.form-group {
+  width: 100%;
+  margin-top: 20px;/*the top of the item will have spaces about 20px*/
+  font-size: 20px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid rgba(128, 128, 128, 0.199);
+  margin-top: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+button[type="submit"] {
+  width: 100%;
+  border: none;/* no border displayed*/
+  outline: none;
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  font-family: "Montserrat";
+  color: rgb(27, 166, 247);
+  text-align: center;/* the text will be located at the center*/
+  cursor: pointer;/* the mouse hovered will become pointer*/
+  margin-top: 10px;
+  transition: 0.3s ease background-color;/* allow property changes to occur smoothly over a specified duration*/
+}
+button[type="submit"]:hover {
+  background-color: rgb(0,0,0);
+}
+#status {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+#status.success {
+  background-color: rgb(211, 250, 153);
+  animation: status 4s ease forwards;
+}
+#status.error {
+  background-color: rgb(250, 129, 92);
+  color: white;
+  animation: status 4s ease forwards;
+}
+@keyframes status {
+  0% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  90% {
+    opacity: 1;
+    pointer-events: all;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+
+/* NAV BAR */
+nav {
+  background-color: black; /*Change the background of the nav tag to black*/
+  color: white; /*Change the font color of the nav tag to white*/
+  top: 0; /*Place the nav tag at the very top edge of the website */
+  display: flexbox; /* Makes the navigation tag flexible, and change size according to screen (Which can help in making a responsive mobile version) */
+  position: sticky; /* Always postition the navigation on top of the screen eventhough user is scrolling down */
+  z-index: 500; /* Stacks the elements. Since the z-index is a high number, the nav tag elements will stack at the highest and wont overlap with other elements.*/
+}
+
+#nav_bar_logo{
+  background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* Change the background color to a gradient color */
+  background-size: 100%; /* Specify size of background */
+  background-clip: text; /* The background size should only be as big as the text size*/
+  -webkit-background-clip: text; /* Same thing as background-clip: text;, but with Chrome and Safari Compatibility */
+  -moz-background-clip: text; /* Same thing as background-clip: text;, but with Mozilla Firefox Compatibility */
+  color: transparent; /* Make the font color transparent (So that it will show the background liner gradient as the font color*/
+  float: left; /* Position the id at the left side */
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 70px;
+  padding-left: 60px;
+  text-decoration: none; /* No underline at the bottom of the anchor tag*/
+  
+}
+
+/* Clearfix hack. Prevent elements from overflowing */
+nav:after{
+  content:'';
+  clear: both;
+  display: table;
+}
+
+nav ul {
+  float: right; /*List will be placed at the right side of the navigation bar*/
+  list-style: none; /* No list style */
+  margin-right: 40px;
+  position: relative; /*Position does not move*/
+}
+
+nav ul li {
+  float: left; /*Lists are originally in a top to bottom way. To flatten it, float: left is used to push each list to the left*/
+  background: black; /* Make the background color black for the drop-down navigation bar */
+  margin: 0 5px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none; /* No underline at the bottom of the anchor tag*/
+  line-height: 70px;
+  font-size: 18px;
+  padding: 8px 15px;
+}
+
+nav ul li a:hover{
+  color: cyan; 
+  border-radius: 5px; /* No sharp edges around border*/
+  /* box-shadow: length of x| length of y| blur radius | color, */
+  box-shadow: 0 0 5px cyan, 0 0 5px cyan; /* The above comment is how box-shadow works. The same comment is written twice to double the shadow, so it looks thicker*/     
+}
+
+nav ul ul li a:hover{
+  color: cyan;
+  box-shadow: none;
+}
+
+.acc_button{
+  background: #B993D6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8CA6DB, #B993D6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 5px; /* No sharp edges around border*/
+}
+
+nav ul ul{
+  position: absolute; /* Stays in the position, but ignore the document layout */
+  top: 90px;/* 90 pixels away from the top of the postion:relative; list*/
+  border-top: 3px solid cyan; /* Cyan color on top of the list */
+  visibility: hidden; /* Make the list hidden */
+  transition: top 0.3s;
+}
+
+nav ul li:hover ul{
+  top: 70px;
+  visibility: visible; /* Make the list visible */
+}
+
+
+nav ul ul li {
+  margin: 0px;
+  width: 150px;
+  float: none; /* DO not want the element to float */
+}
+
+nav ul ul li a{
+  line-height: 50px;
+}
+
+.show, .icon{ 
+  display: none; /* Dont display it (Will use it in the mobile size screen) */
+}
+
+@media screen and (max-width: 968px){ /* If the width of the screen becomes 968 pixels, execute the code below*/
+  nav ul{
+      margin-right: 0px;
+      float: left;
+  }
+
+  #nav_bar_logo{
+      padding-left: 30px;
+      width: 100%;
+  }
+
+  nav ul li, nav ul ul li {
+      display: block;
+      width: 100%;
+  }
+
+  nav ul ul{
+      top: 70px;
+      position: static;
+      border-top: none;
+      float: none;
+      display: none;
+      opacity: 1;
+      visibility: visible;
+  }
+
+  nav ul ul li{
+      border-bottom: 0px;
+  }
+
+
+  nav ul ul a{
+      padding-left: 40px;
+  }
+
+  .show{
+      display: block;
+      color: white;
+      font-size: 18px;
+      padding: 0 20px;
+      line-height: 70px;
+      cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+  }
+
+  .show:hover{
+      color: cyan;
+  }
+
+  .icon{
+      display: block;
+      color: white;
+      position: absolute;
+      right: 40px;
+      line-height: 70px;
+      font-size: 25px;
+      cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+  }
+
+  nav ul li a:hover{
+      box-shadow: none;
+  }
+
+  .show + a, ul{
+      display: none;
+  }
+
+  [id^=btn]:checked + ul{ /* selects all elements with the id attribute value that begins with "btn" */
+      display: block;
+  }
+}
+
+/* Footer Section*/
+.footer_section {
+  background-color: black; 
+  padding: 60px 0; /* Top and Bottom Padding */
+  display: flex;
+  flex-direction: column; /* Will expand to column, not rows*/
+  align-items: center; /* center the items inside of footer_section */
+}
+
+#footer_logos {
+  color: white; /* Color of word is white */
+  cursor: pointer; /* When hovered over to product-remove class, change the mouse cursor to pointer*/
+  text-decoration: none; /* No underline at the bottom of the anchor tag*/
+  font-size: 24px;
+}
+
+.footer_links {
+  display: flex; /* expands items to fill available free space or shrinks them to prevent overflow */
+}
+
+.footer_link_wrapper {
+  display: flex; /* expands items to fill available free space or shrinks them to prevent overflow */
+}
+
+.footer_link_items{
+  display: flex; /* expands items to fill available free space or shrinks them to prevent overflow */
+  flex-direction: column;
+  margin: 30px; /*Add margin around of footer_link_items. Outside of borders*/
+  text-align: left; /* All text will align on the left hand side*/
+  width: 200px; /* Widh of footer_link_items set to 200px */
+}
+
+.footer_text {
+  color: white; /* Color of word is white */
+  margin-bottom: 5px; /* Set bottom margin to 5px outside of border (Provides spaces between items) */
+}
+
+.para_adjust {
+  color: white; /* Color of word is white */
+  font-size: 12px;
+}
+
+
+.image_style {
+  width: 50px; 
+  height: 30px; 
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+
+.footer_link_items h2 {
+  color: white; /* Color of words is white in color */
+  margin-bottom: 16px; /* Set bottom margin to 16px at the bottom of border (Provides spaces between items) */
+}
+
+.footer_link_items a {
+  color: white; /* Color of words is white in color */
+  text-decoration: none; /* No underline at the bottom of the anchor tag*/
+  margin-bottom: 6px; /* Set bottom margin to 6px at the bottom of border  (Provides spaces between items) */
+}
+
+.footer_link_items a:hover{
+  color: #d3d3d3; /*Change color of words when hovered*/
+  transition: 0.3s; /* Can see effect taking action slower*/
+}
+
+.social_media_icon_link {
+  color: rgb(255, 255, 255); /* Color of words */
+  font-size: 24px; /* Size of words is 24 pixels*/
+}
+
+.social_media {
+  width: 1000px; /*Set width to 1000 pixels*/
+}
+
+.social_media_wrapper {
+  display: flex; /* expands items to fill available free space or shrinks them to prevent overflow */
+  justify-content: space-between; /* Add a little spacing between words */
+  align-items: center; /* center the items inside of social_media_wrapper */
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+}
+
+.social_media_icons {
+  display: flex; /* expands items to fill available free space or shrinks them to prevent overflow */
+  justify-content: space-between; /* Add a little spacing between words */
+  align-items: center; /* center the items inside of social_media_icons */
+  width: 240px; /* Width set to 240 pixels */
+}
+
+.website_rights {
+  color: white;  /* Color of words is white in color */
+}
+
+@media screen and (max-width: 820px) { /* If the width of the screen becomes 820 pixels, execute the code below*/
+  .footer_links{
+      padding-top: 24px; /* create space on top of element, inside of borders. */
+  }
+
+  #footer_logos {
+      margin-bottom: 24px; /* Set bottom margin to 24px outside of border (Provides spaces between items) */
+  }
+
+  .website_rights{
+      margin-bottom: 24px; /* Set bottom margin to 24px outside of border (Provides spaces between items) */
+  }
+
+  .footer_link_wrapper {
+      flex-direction: column; /* Container will expand in column direction and not in row*/
+  }
+
+  .social_media_wrapper{
+      flex-direction: column; /* Container will expand in column direction and not in row*/
+  }
+
+}
+
+@media screen and (max-width: 480px) { /* If the width of the screen becomes 480 pixels, execute the code below*/
+  .footer_link_items {
+      margin: 0; /* No margins around border */
+      padding: 10px; /* create space around element, inside of borders. */
+      width: 100%; /* width will stretch 100% of screen*/
+  }
+}
